@@ -9,20 +9,20 @@ const port = 3000;
 
 // path inicial, responderá a la url localhost:3000
 app.get("/", (request, response)=>{
-    response.json({message: "FizzBuzz Api welcome!"});
+    response.json({message: "VisualPartnership Api welcome!"});
 });
 
-app.get("/v1/visualpartners", (request, response)=>{    
+app.get("/v1/students", (request, response)=>{    
     const visualpartners = VisualPartnersController.getAllStudents();
     response.json(visualpartners);
 });
 
-app.get("/v1/visualpartners/emails/", (request, response)=>{    
+app.get("/v1/students/emails/", (request, response)=>{    
     const visualpartners = VisualPartnersController.getStudentsMailWithCertification();
     response.json(visualpartners);
 });
 
-app.get("/v1/visualpartners/filterByCredistGreaterThan/:credits", (request, response)=>{
+app.get("/v1/students/credits/:credits", (request, response)=>{
     const credits = request.params.credits;
     const filteredByCredits = VisualPartnersController.filterStudentsWithCreditsGreaterThan(credits);    
     response.json({credits: request.params.credits, visualpartners: filteredByCredits});
